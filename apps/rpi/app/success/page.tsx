@@ -4,10 +4,12 @@ import React from "react";
 
 const SuccessPage = () => {
 	return (
-		<Result
-			icon={<Check className="w-10 h-10 text-green-600" />}
-			result="VERIFIED"
-		/>
+		<React.Suspense fallback={<div>Loading...</div>}>
+			<Result
+				icon={<Check className="w-10 h-10 text-green-600" />}
+				result="VERIFIED"
+			/>
+		</React.Suspense>
 	);
 };
 

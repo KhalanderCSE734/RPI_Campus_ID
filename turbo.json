@@ -24,6 +24,10 @@
 		},
 		"//#kill-ports": {
 			"cache": false
+		},
+		"start": {
+			"cache": false,
+			"dependsOn": ["^build"]
 		}
 	}
 }

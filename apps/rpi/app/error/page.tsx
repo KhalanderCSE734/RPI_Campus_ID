@@ -4,7 +4,9 @@ import React from "react";
 
 const ErrorPage = () => {
 	return (
-		<Result icon={<X className="w-10 h-10 text-red-600" />} result="Failed" />
+		<React.Suspense fallback={<div>Loading...</div>}>
+			<Result icon={<X className="w-10 h-10 text-red-600" />} result="Failed" />
+		</React.Suspense>
 	);
 };
 
