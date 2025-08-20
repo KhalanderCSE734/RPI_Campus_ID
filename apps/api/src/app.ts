@@ -1,24 +1,46 @@
-import express from "express";
 import cors from "cors";
-import 'dotenv/config'
-
-
-const PORT = process.env.PORT || 4000;
+import express from "express";
+import "dotenv/config";
 
 const app = express();
 
-const corsOptions = {
-    origin: process.env.FRONTEND_URL,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  };
+app.use(
+	cors({
+		origin: "*",
+		credentials: true,
+	}),
+);
 
-app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send({ success :true,message: "Server is Up and Running"});
+	res.send({ success: true, message: "Server is Up and Running" });
 });
 
+/**
+ * {
+ * usn: string
+ * timestamp: Date
+ * gate: string
+ * way: in | out
+ * }
+ *
+ */
+app.post("/verify", (req, res) => {
+	/**
+	 * 1. First we wlil get the USN
+	 * 2. We will fetch the data from db and do some verification
+	 * 3. Send the response
+	 */
+	console.log(req.body);
+	const usn = req.body as { usn: string };
+
+	//TODO
+	const isVerified = true;
+
+	res.json({
+		verified: isVerified,
+	});
+});
 
 export default app;
