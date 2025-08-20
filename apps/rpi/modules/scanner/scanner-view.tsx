@@ -32,12 +32,6 @@ export const ScannerView = () => {
 					<p className="text-gray-600 mb-8 leading-relaxed">
 						Position your barcode or QR code in front of the scanner
 					</p>
-
-					<div className="flex justify-center mb-6">
-						<div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center border border-gray-200">
-							<User className="w-8 h-8 text-gray-500" strokeWidth={1.5} />
-						</div>
-					</div>
 				</div>
 
 				<Input
