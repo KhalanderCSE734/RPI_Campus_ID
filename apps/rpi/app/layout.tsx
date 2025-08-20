@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 import "@ryft/ui/globals.css";
+import { TanstackQueryProvider } from "@ryft/rpi/providers/query-client-provider";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={inter.className}>{children}</body>
+			<body className={inter.className}>
+				<TanstackQueryProvider>{children}</TanstackQueryProvider>
+			</body>
 		</html>
 	);
 }

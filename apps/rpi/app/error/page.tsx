@@ -4,11 +4,7 @@ import React from "react";
 
 const ErrorPage = () => {
 	return (
-		<Result
-			usn="1BM23CS116"
-			icon={<X className="w-10 h-10 text-red-600" />}
-			result="Failed"
-		/>
+		<Result icon={<X className="w-10 h-10 text-red-600" />} result="Failed" />
 	);
 };
 

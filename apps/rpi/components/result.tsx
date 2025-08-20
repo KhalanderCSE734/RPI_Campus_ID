@@ -1,16 +1,29 @@
+"use client";
+
 import { Card, CardContent } from "@ryft/ui/components/card";
-import type React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React from "react";
 
 interface ResultProps {
-	usn: string;
 	icon: React.ReactNode;
 	result: string;
 }
 
-export const Result = ({ usn, icon, result }: ResultProps) => {
+export const Result = ({ icon, result }: ResultProps) => {
+	const searchParams = useSearchParams();
+	const router = useRouter();
+	const usn = searchParams.get("usn");
+
+	React.useEffect(() => {
+		const timeout = setTimeout(() => {
+			router.push("/");
+		}, 2000);
+		return () => clearTimeout(timeout);
+	}, [router]);
+
 	return (
-		<div className="h-screen w-full mx-auto bg-gradient-to-br bg-muted flex items-center justify-center p-4">
-			<Card className="max-w-[400px] w-full border bg-background/90 backdrop-blur-sm">
+		<div className="h-screen w-full mx-auto bg-muted flex items-center justify-center p-4">
+			<Card className="max-w-[300px] w-full border bg-background/90 backdrop-blur-sm">
 				<CardContent className="p-8 text-center">
 					<div className="inline-flex items-center justify-center w-20 h-20 bg-muted rounded-full mb-6">
 						{icon}

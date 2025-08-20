@@ -36,7 +36,7 @@ app.post("/verify", (req, res) => {
 	const usn = req.body as { usn: string };
 
 	//TODO
-	const isVerified = true;
+	const isVerified = false;
 
 	res.json({
 		verified: isVerified,
