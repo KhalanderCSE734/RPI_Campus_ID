@@ -9,8 +9,8 @@
 	},
 	"baseUrl": ".",
 	"paths": {
-		"@/*": ["./*"],
-		"@workspace/ui/*": ["../../packages/ui/src/*"]
+		"@ryft/rpi/*": ["./*"],
+		"@ryft/ui/*": ["../../packages/ui/src/*"]
 	},
 	"include": [
 		"**/*.ts",
