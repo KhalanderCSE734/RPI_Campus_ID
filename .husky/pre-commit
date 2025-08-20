@@ -1,1 +1,5 @@
+bun run check-types
+
 lint-staged
+
+bun run build

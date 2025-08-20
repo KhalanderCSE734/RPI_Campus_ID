@@ -5,7 +5,11 @@ import React from "react";
 const ErrorPage = () => {
 	return (
 		<React.Suspense fallback={<div>Loading...</div>}>
-			<Result icon={<X className="w-10 h-10 text-red-600" />} result="Failed" />
+			<Result
+				icon={<X className="w-10 h-10" strokeWidth={2.5} />}
+				result="Failed"
+				type="error"
+			/>
 		</React.Suspense>
 	);
 };
