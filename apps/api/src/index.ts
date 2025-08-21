@@ -1,8 +1,7 @@
 import "dotenv/config";
-import app from "./app";
+import app from "@ryft/api/app";
+import { env } from "@ryft/api/lib/env";
 
-const PORT = process.env.PORT || 8080;
-
-app.listen(PORT, () => {
-	console.log(`API Server is running on http://localhost:${PORT}`);
+app.listen(env.PORT, () => {
+	console.log(`API Server is running on http://localhost:${env.PORT}`);
 });

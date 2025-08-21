@@ -7,37 +7,37 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 export const useScanner = () => {
-	const [USN, setUSN] = React.useState("");
+	const [id, setId] = React.useState("");
 	const router = useRouter();
 	const { NEXT_PUBLIC_API_URL } = env;
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const usn = e.target.value.trim();
-		setUSN(usn);
+		const id = e.target.value.trim();
+		setId(id);
 	};
 
 	const verifyMutation = useMutation({
-		mutationFn: async (usn: string) => {
+		mutationFn: async (id: string) => {
 			const response = await axios.post(`${NEXT_PUBLIC_API_URL}/verify`, {
-				usn,
+				id,
 			});
 			return response.data as { verified?: boolean };
 		},
-		onSuccess: (data, usn) => {
+		onSuccess: (data, id) => {
 			const href = data?.verified
-				? `/success?usn=${encodeURIComponent(usn)}`
-				: `/error?usn=${encodeURIComponent(usn)}`;
+				? `/success?id=${encodeURIComponent(id)}`
+				: `/error?id=${encodeURIComponent(id)}`;
 			router.push(href);
 		},
-		onError: (_, usn) => {
-			router.push(`/error?usn=${encodeURIComponent(usn)}`);
+		onError: (_, id) => {
+			router.push(`/error?id=${encodeURIComponent(id)}`);
 		},
 	});
 
 	const submitUSN = React.useCallback(
-		async (usn: string) => {
-			if (!usn || verifyMutation.isPending) return;
-			verifyMutation.mutate(usn);
+		async (id: string) => {
+			if (!id || verifyMutation.isPending) return;
+			verifyMutation.mutate(id);
 		},
 		[verifyMutation],
 	);
@@ -45,7 +45,7 @@ export const useScanner = () => {
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === "Enter") {
 			e.preventDefault();
-			submitUSN(USN);
+			submitUSN(id);
 		}
 	};
 

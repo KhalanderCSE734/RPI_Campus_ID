@@ -12,7 +12,7 @@ interface ResultProps {
 export const Result = ({ icon, result, type }: ResultProps) => {
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	const usn = searchParams.get("usn");
+	const id = searchParams.get("id");
 
 	React.useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -67,11 +67,11 @@ export const Result = ({ icon, result, type }: ResultProps) => {
 						{result}
 					</h1>
 
-					{usn && (
+					{id && (
 						<div className="mb-6">
-							<p className="text-sm text-gray-500 mb-2">Student USN</p>
+							<p className="text-sm text-gray-500 mb-2">Details</p>
 							<p className="text-lg font-medium text-gray-800 bg-gray-50 rounded-xl px-4 py-2 border border-gray-200">
-								{usn}
+								{id}
 							</p>
 						</div>
 					)}
